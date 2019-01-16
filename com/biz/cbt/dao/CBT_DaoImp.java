@@ -91,10 +91,13 @@ public class CBT_DaoImp implements CBT_Dao{
 		String thi = cbvo.getCb_thi_02();
 		String fou = cbvo.getCb_fou_02();
 		int ans = cbvo.getCb_ans_02();
+		String strAns = String.valueOf(ans);
 		
 		String sql = " INSERT INTO tbl_cbt ";
-		sql += " VALUES('" + id_02 + "', '" + que + "', '" + fir + "', ";
-		sql += " '" + sec + "', '" + thi + "', '" + fou + "' ";
+		sql += " VALUES('" + id_02 + "', ";
+		sql += " '" + que + "', '" + fir + "', ";
+		sql += " '" + sec + "', '" + thi + "', ";
+		sql += " '" + fou + "', '" + strAns + "' ";
 		sql += " ) ";
 		
 		sql += " INSERT INTO tbl_cbt ";
@@ -132,6 +135,7 @@ public class CBT_DaoImp implements CBT_Dao{
 		sql += " cb_thi = ?, ";
 		sql += " cb_fou = ?, ";
 		sql += " cb_ans = ? ";
+		sql += " WHERE cb_id = ? ";
 		
 		PreparedStatement ps;
 		try {
@@ -143,6 +147,7 @@ public class CBT_DaoImp implements CBT_Dao{
 			ps.setString(5, cbvo.getCb_thi_02());
 			ps.setString(6, cbvo.getCb_fou_02());
 			ps.setInt(7, cbvo.getCb_ans_02());
+			ps.setLong(8, cbvo.getId_02());
 			
 			ps.executeUpdate();
 			
